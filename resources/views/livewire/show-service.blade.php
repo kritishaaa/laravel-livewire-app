@@ -3,11 +3,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-8 mx-auto text-center">
-				<h2 class="mb-3 text-capitalize">Our Services</h2>
+				<h2 class="mb-3 text-capitalize">{{$service->title}}</h2>
 				<ul class="list-inline breadcrumbs text-capitalize" style="font-weight:500">
-					<li class="list-inline-item"><a href="index.html">Home</a>
+					<li class="list-inline-item"><a wire:navigate href="{{route('home')}}">Home</a>
 					</li>
-					<li class="list-inline-item">/ &nbsp; <a href="services.html">Services</a>
+					<li class="list-inline-item">/ &nbsp; <a wire:navigate href="{{route('service')}}">Services</a>
+					</li>
+					<li class="list-inline-item">/ &nbsp; {{$service->title}}</a>
 					</li>
 				</ul>
 			</div>
@@ -34,22 +36,15 @@
 	</div>
 </section>
 
-<section class="section">
+<section class="section-sm">
 	<div class="container">
-		<div class="row justify-content-center">
-            @if ($services->isNotEmpty())
-                @foreach ($services as $service )
-                    <div class="icon-box-item text-center col-lg-4 col-md-6 mb-4">
-				        <div class="rounded shadow py-5 px-4">
-					        <div class="icon"> <i class="fas fa-user"></i>
-					        </div>
-					        <h3 class="mb-3">{{$service->title}}</h>
-					        <p class="mb-4">{{$service->short_desc}}</p> <a wire:navigate class="btn btn-sm btn-outline-primary" href="{{route('showService', $service->id)}}">View Details <i class="las la-arrow-right ms-1"></i></a>
-				        </div>
-			        </div>
-                @endforeach
-            @endif
+		<div class="row g-5">
 			
+			<div class="col-lg-12">
+				<div class="content">
+					{!! $service->description!!}
+                </div>
+			</div>
 		</div>
 	</div>
 </section>
