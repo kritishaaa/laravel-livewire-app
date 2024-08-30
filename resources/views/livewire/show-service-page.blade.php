@@ -39,7 +39,7 @@
 		<div class="row justify-content-center">
             @if ($services->isNotEmpty())
                 @foreach ($services as $service )
-                   <x-service-detail-card :service = "$service"/>
+                   <x-service-detail-card :service="$service"/>
                 @endforeach
             @endif
 			
