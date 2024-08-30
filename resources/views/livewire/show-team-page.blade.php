@@ -3,11 +3,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-8 mx-auto text-center">
-				<h2 class="mb-3 text-capitalize">Our Services</h2>
+				<h2 class="mb-3 text-capitalize">Our Team</h2>
 				<ul class="list-inline breadcrumbs text-capitalize" style="font-weight:500">
-					<li class="list-inline-item"><a href="index.html">Home</a>
+					<li class="list-inline-item"><a wire:navigate href="{{ route('home') }}">Home</a>
 					</li>
-					<li class="list-inline-item">/ &nbsp; <a href="services.html">Services</a>
+					<li class="list-inline-item">/ &nbsp; <a wire:navigate href="{{ route('service') }}">Our Team</a>
 					</li>
 				</ul>
 			</div>
@@ -34,15 +34,28 @@
 	</div>
 </section>
 
-<section class="section">
+
+<section class="section teams">
 	<div class="container">
 		<div class="row justify-content-center">
-            @if ($services->isNotEmpty())
-                @foreach ($services as $service )
-                   <x-service-detail-card :service = "$service"/>
+			<div class="col-12">
+				<div class="section-title text-center">
+					<p class="text-primary text-uppercase fw-bold mb-3">Questions You Have</p>
+					<h1>People Behind Us</h1>
+					<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing . egestas
+						<br>cursus pellentesque dignissim dui, congue. Vel etiam ut</p>
+				</div>
+			</div>
+		</div>
+		<div class="row position-relative">
+            @if ($members->isNotEmpty())
+                @foreach ($members as $member)
+			        <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
+                        <x-team-card :member="$member"/>  
+                    </div>
                 @endforeach
+                
             @endif
-			
 		</div>
 	</div>
 </section>

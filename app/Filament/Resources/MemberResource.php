@@ -30,8 +30,8 @@ class MemberResource extends Resource
             ->schema([
                 TextInput::make('name')->required(),
                 TextInput::make('designation')->required(),
-                TextInput::make('fb_url')->label('Facebook url'),
-                TextInput::make('linkedin_url')->label('LinkedIn url'),
+                TextInput::make('fb_url')->url()->label('Facebook url'),
+                TextInput::make('linkedin_url')->url()->label('LinkedIn url'),
                 FileUpload::make('image')->columnSpan(2),
                 Select::make('status')->options([
                     '1' => 'Active',
