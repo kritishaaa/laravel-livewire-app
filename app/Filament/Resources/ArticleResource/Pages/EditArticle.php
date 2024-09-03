@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\BlogCategoryResource\Pages;
+namespace App\Filament\Resources\ArticleResource\Pages;
 
-use App\Filament\Resources\BlogCategoryResource;
+use App\Filament\Resources\ArticleResource;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 
-class EditBlogCategory extends EditRecord
+class EditArticle extends EditRecord
 {
-    protected static string $resource = BlogCategoryResource::class;
+    protected static string $resource = ArticleResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -17,6 +17,7 @@ class EditBlogCategory extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
 
     protected function getRedirectUrl(): string
     {
@@ -27,7 +28,7 @@ class EditBlogCategory extends EditRecord
     {
         return Notification::make()
             ->success()
-            ->title('Category Updated')
-            ->body('Category updated successfully.');
+            ->title('Article Updated')
+            ->body('Article updated successfully.');
     }
 }
