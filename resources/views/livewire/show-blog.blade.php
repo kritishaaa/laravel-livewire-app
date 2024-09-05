@@ -93,45 +93,25 @@
 				<div class="widget">
 					<h5 class="widget-title"><span>Latest Article</span></h5>
 					<!-- post-item -->
-					<ul class="list-unstyled widget-list">
-						<li class="d-flex widget-post align-items-center">
-							<a class="text-black" href="/blog/elements/">
-								<div class="widget-post-image flex-shrink-0 me-3">
-									<img class="rounded" loading="lazy" decoding="async" src="images/blog/post-4.jpg" alt="Post Thumbnail">
-								</div>
-							</a>
-							<div class="flex-grow-1">
-								<h5 class="h6 mb-0"><a class="text-black" href="blog-details.html">Elements That You Can Use To Create A New Post On This Template.</a></h5>
-								<small>March 15, 2020</small>
-							</div>
-						</li>
-					</ul>
-					<ul class="list-unstyled widget-list">
-						<li class="d-flex widget-post align-items-center">
-							<a class="text-black" href="/blog/post-1/">
-								<div class="widget-post-image flex-shrink-0 me-3">
-									<img class="rounded" loading="lazy" decoding="async" src="images/blog/post-1.jpg" alt="Post Thumbnail">
-								</div>
-							</a>
-							<div class="flex-grow-1">
-								<h5 class="h6 mb-0"><a class="text-black" href="blog-details.html">Cheerful Loving Couple Bakers Drinking Coffee</a></h5>
-								<small>March 14, 2020</small>
-							</div>
-						</li>
-					</ul>
-					<ul class="list-unstyled widget-list">
-						<li class="d-flex widget-post align-items-center">
-							<a class="text-black" href="/blog/post-2/">
-								<div class="widget-post-image flex-shrink-0 me-3">
-									<img class="rounded" loading="lazy" decoding="async" src="images/blog/post-2.jpg" alt="Post Thumbnail">
-								</div>
-							</a>
-							<div class="flex-grow-1">
-								<h5 class="h6 mb-0"><a class="text-black" href="blog-details.html">Cheerful Loving Couple Bakers Drinking Coffee</a></h5>
-								<small>March 14, 2020</small>
-							</div>
-						</li>
-					</ul>
+                     @if ($latestBlogs->isNotEmpty())
+
+                     @foreach ($latestBlogs as $latestBlog)
+                     
+                     <ul class="list-unstyled widget-list">
+                         <li class="d-flex widget-post align-items-center">
+                             <a class="text-black" href="/blog/elements/">
+                               
+                             </a>
+                             <div class="flex-grow-1">
+                                 <h5 class="h6 mb-0"><a class="text-black" href="blog-details.html">{{$latestBlog->title}}</a></h5>
+                                 <small>{{\Carbon\Carbon::parse($blog->created_at)->format('d M,Y')}}</small>
+                             </div> 
+                         </li>
+                     </ul>
+                     @endforeach
+                     
+                     @endif
+					
 				</div>
 				<!-- Social -->
 				

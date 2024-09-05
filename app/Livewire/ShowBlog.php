@@ -27,9 +27,13 @@ class ShowBlog extends Component
             $blogs = Article::orderBy('created_at', 'DESC')->paginate(2);
         }
 
+        $latestBlogs = Article::orderBy('created_at', 'DESC')
+                ->take(3)->get();
+
         return view('livewire.show-blog', [
             'blogs' => $blogs,
-            'categories' =>$categories
+            'categories' =>$categories,
+            'latestBlogs'=> $latestBlogs
             
         ] );
     }
