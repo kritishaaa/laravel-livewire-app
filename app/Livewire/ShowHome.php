@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\BlogCategory;
 use App\Models\Service;
 use Livewire\Component;
 
