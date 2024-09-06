@@ -3,38 +3,26 @@
 namespace App\Livewire;
 
 use App\Models\Article;
-use App\Models\BlogCategory;
-use Livewire\Attributes\Url;
 use Livewire\Component;
 
 class ShowBlog extends Component
 {
-    #[Url]
-    public $categorySlug = null;
+
+    public $blogId;
+    
+    public function mount($id)
+    {
+    $this->blogId = $id;
+         
+    }
+
     public function render()
     {
-        $categories = BlogCategory::all();
-        if(!empty($this->categorySlug)){
-            $category = BlogCategory::where('slug', $this->categorySlug)->first();
-            if(empty($category)){
-                abort(404);
-            }
-            $blogs = Article::orderBy('created_at', 'DESC')
-                            ->where('category_id', $category->id)
-                            ->paginate(2);
-
-        }else{
-            $blogs = Article::orderBy('created_at', 'DESC')->paginate(2);
-        }
-
-        $latestBlogs = Article::orderBy('created_at', 'DESC')
-                ->take(3)->get();
-
-        return view('livewire.show-blog', [
-            'blogs' => $blogs,
-            'categories' =>$categories,
-            'latestBlogs'=> $latestBlogs
-            
-        ] );
+        $blog = Article::select('articles.*', 'blog_categories.name as category_name')
+        ->leftJoin('blog_categories', 'blog_categories.id', 'articles.category_id')
+        ->findOrFail($this->blogId);
+        return view('livewire.show-blog',[
+            'blog' => $blog
+        ]);
     }
 }

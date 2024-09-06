@@ -7,8 +7,8 @@
 		</div>
 		<div class="pt-4">
 			<p class="mb-3">{{\Carbon\Carbon::parse($blog->created_at)->format('d M,Y')}}</p>
-			<h2 class="h4"><a class="text-black" href="blog-details.html">{{$blog->title}}</a></h2>
-			<p>{{$blog->content}}</p> <a href="blog-details.html" class="text-primary fw-bold" aria-label="Read the full article by clicking here">Read More</a>
+			<h2 class="h4"><a class="text-black" wire:navigate href="{{route('showBlog', $blog->id)}}">{{$blog->title}}</a></h2>
+			<p> {!! $blog->content!!}</p> <a wire:navigate href="{{route('showBlog', $blog->id)}}" class="text-primary fw-bold" aria-label="Read the full article by clicking here">Read More</a>
 		</div>
 	</article>
 </div>
