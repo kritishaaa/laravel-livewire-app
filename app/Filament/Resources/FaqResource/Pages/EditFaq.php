@@ -4,6 +4,7 @@ namespace App\Filament\Resources\FaqResource\Pages;
 
 use App\Filament\Resources\FaqResource;
 use Filament\Actions;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 
 class EditFaq extends EditRecord
@@ -16,4 +17,17 @@ class EditFaq extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
+
+    protected function getSavedNotification(): ?Notification
+{
+    return Notification::make()
+        ->success()
+        ->title('FAQ Updated')
+        ->body('FAQ updated successfully.');
+}
 }
